@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jóvenes | 1ra Iglesia Bautista El Sinaí Palma Soriano</title>
+    <style>
+        :root {
+            --primary-color: #1E293B;
+            --primary-hover: #0F172A;
+            --accent-color: #7C3AED;
+            --accent-hover: #6D28D9;
+            --bg-light: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 2rem;
+        }
+
+        /* ENCABEZADO SOLO CON LA IMAGEN DE FONDO */
+        header {
+            background-image: url('https://i.ibb.co/HTnVsC22/IMG-20260908-WA0042.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 260px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* MENÚ DE NAVEGACIÓN Y BOTONES CON SOMBRAS Y ELEVACIÓN */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            padding: 0.9rem;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border-radius: 20px;
+            border: 1px solid rgba(30, 41, 59, 0.12);
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav a:hover {
+            background: #1E293B;
+            color: #FFFFFF;
+            border-color: #1E293B;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(30, 41, 59, 0.2);
+        }
+
+        nav a:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(30, 41, 59, 0.15);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            margin-bottom: 1.8rem;
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            color: #1E293B;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 0.4rem;
+        }
+
+        .card-inner {
+            background: #F1F5F9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            border-left: 4px solid #334155;
+        }
+
+        .card-highlight {
+            background: #FEF3C7;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 0.65rem;
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus, 
+        .form-group select:focus {
+            border-color: #1E293B;
+            box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #1E293B;
+            color: #FFFFFF;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.25);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-submit:hover {
+            background: #0F172A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.35);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+        }
+
+        .btn-amber {
+            background: #D97706;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+        }
+        .btn-amber:hover {
+            background: #B45309;
+            box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+        }
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+        }
+
+        details {
+            background: #F8FAFC;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-top: 0.8rem;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 0.8rem 1rem;
+            font-weight: 700;
+            color: #1E293B;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::after {
+            content: "▼";
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* ESTILOS DE LA GALERÍA */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            padding: 1rem 0.5rem;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO LIMPIO -->
+    <header></header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#interactivo">Interactivo</a>
+        <a href="#fe">Devocional</a>
+        <a href="#horarios">Horarios</a>
+        <a href="#oracion">Oración</a>
+        <a href="#galeria">Galería</a>
+        <a href="#quienes-somos">¿Quiénes Somos?</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- INICIO -->
+        <section id="inicio">
+            <h2>👋 ¡Bienvenido a nuestra Web!</h2>
+            <p style="color: var(--text-muted);">Este es nuestro espacio para conectar, compartir la Palabra de Dios, crecer en fe y apoyarnos como una verdadera familia.</p>
+        </section>
+
+        <!-- ZONA INTERACTIVA: ENCUESTA Y DEBATE SEMANAL -->
+        <section id="interactivo">
+            <h2>🔥 Zona Interactiva & Debates</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.2rem;">¡Tu opinión y tus dudas cuentan! Participa en las dinámicas de esta semana:</p>
+
+            <!-- 1. ENCUESTA SEMANAL -->
+            <div class="card-highlight" style="border-left-color: #F59E0B; background: #FEF3C7;">
+                <span class="badge" style="background: #FDE68A; color: #78350F;">ENCUESTA DE LA SEMANA</span>
+                <h3 style="color: #92400E; margin-top: 0.3rem;">📊 ¿Puede un cristiano escuchar música secular sin comprometer su fe?</h3>
+
+                <form id="poll-form" name="encuesta-semanal" method="POST" data-netlify="true" style="margin-top: 0.8rem;">
+                    <input type="hidden" name="form-name" value="encuesta-semanal" />
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+                        <label style="font-weight: 600; cursor: pointer;">
+                            <input type="radio" name="voto" value= > Claro que sí 
+                        </label>
+                        <label style="font-weight: 600; cursor: pointer;">
+                            <input type="radio" name="voto" value=> No
+                        </label>
+                        <label style="font-weight: 600; cursor: pointer;">
+                            <input type="radio" name="voto" value=> No estoy seguro sobre este asunto 
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit btn-amber">Votar en la encuesta</button>
+                </form>
+
+                <div id="poll-voted-msg" style="display: none; padding: 1rem 0; text-align: center;">
+                    <div style="background: #FDE68A; color: #78350F; padding: 0.8rem; border-radius: 8px; font-weight: 700;">
+                        ✅ ¡Tu voto ha sido registrado con éxito!
+                    </div>
+                    <p style="color: #92400E; font-size: 0.88rem; margin-top: 0.6rem;">
+                        Los resultados finales los anunciaremos en nuestra próxima reunión presencial.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- 2. DEBATE SEMANAL -->
+            <div class="card-inner" style="border-left-color: var(--accent-color);">
+                <span class="badge" style="background: #DDD6FE; color: #5B21B6;">DEBATE SEMANAL</span>
+                <h3 style="color: #4C1D95; margin-top: 0.3rem;">❓ Pregunta Controversial</h3>
+                <p style="margin-bottom: 0.8rem;"><em>"¿Puede un cristiano escuchar música secular sin comprometer su fe?"</em></p>
+
+ RESPUESTA BASADA EN LA ENCUESTA --> 
+               <div style="background: #F3E8FF; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 1.2rem; border-left: 3px solid var(--accent-color);">
+                    <strong style="color: #5B21B6; font-size: 0.88rem;">💡 Respuesta a la pregunta controversial:</strong>
+                    <p style="font-size: 0.88rem; color: #4C1D95; margin-top: 0.2rem;">
+                        La respuesta a este tema se basa en el tema seleccionado previamente en la encuesta del grupo y será profundizada durante nuestro estudio del próximo sábado.
+                    </p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1rem 0;">
+               
+
+                <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">✍️ ¿Tienes una pregunta difícil o controversial?</h4>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">Déjala aquí (puede ser anónima). Las responderemos en los estudios de los sábados:</p>
+
+                <form name="preguntas-dificiles" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="preguntas-dificiles" />
+
+                    <div class="form-group">
+                        <input type="text" name="nombre_opcional" placeholder="Tu nombre (opcional)">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="pregunta_controversial" rows="3" placeholder="Escribe tu pregunta aquí..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit btn-accent">📩 Enviar Pregunta</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FE Y CRECIMIENTO -->
+        <section id="fe">
+            <h2>📖 Fe & Crecimiento</h2>
+            
+            <div class="card-inner">
+                <span class="badge" style="background: #DBEAFE; color: #1E40AF;">VERSÍCULO</span>
+                <h3 style="color: #1E293B; font-size: 1.05rem; margin: 0.4rem 0 0.2rem 0;">1 Timoteo 4:12</h3>
+                <p><em>"Ninguno tenga en poco tu juventud, sino sé ejemplo de los creyentes en palabra, conducta, amor, espíritu, fe y pureza."</em></p>
+            </div>
+
+            <div class="card-inner">
+                <span class="badge" style="background: #E0E7FF; color: #3730A3;">REFLEXIÓN SEMANAL</span>
+                <h3 style="color: #1E293B; font-size: 1.05rem; margin: 0.4rem 0 0.3rem 0;">🌱 Firmes en Tiempos de Cambio</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem;">
+                    Ser joven hoy implica enfrentar presiones constantes. Sin embargo, la Palabra nos recuerda que nuestra identidad no depende del entorno, sino de Aquel que nos llamó. Mantener la fe firme requiere oración diaria y el respaldo de la comunidad.
+                </p>
+            </div>
+
+            <div class="card-inner" style="border-left-color: #059669;">
+                <span class="badge" style="background: #D1FAE5; color: #065F46;">PLAN DE LECTURA</span>
+                <h3 style="color: #065F46; margin-top: 0.3rem;">📖 Lectura Bíblica Semanal</h3>
+                <p style="color: var(--text-muted);">Estaremos compartiendo pasajes semanales para profundizar juntos en las Escrituras durante nuestras reuniones del sábado.</p>
+            </div>
+        </section>
+
+        <!-- HORARIOS -->
+        <section id="horarios">
+            <h2>⏰ Cultos y Horarios</h2>
+            
+            <details>
+                <summary>📅 Ver Horarios y Reuniones</summary>
+                <div style="padding: 1rem 0.5rem;">
+                    <div class="card-inner">
+                        <h3 style="color: #1E293B; margin-bottom: 0.3rem;">🔥 Reunión de Jóvenes</h3>
+                        <p><span class="badge" style="background: #FEF3C7; color: #92400E;">Sábados</span> <strong>5:30 PM</strong></p>
+                    </div>
+
+                    <div class="card-inner">
+                        <h3 style="margin-bottom: 0.4rem;">⛪ Cultos Generales de la Iglesia</h3>
+                        <p style="color: var(--text-muted);"><span class="badge" style="background: #E2E8F0; color: #334155;">Martes</span> <strong>5:30 PM</strong> — Culto de Oración</p>
+                        <p style="color: var(--text-muted);"><span class="badge" style="background: #E2E8F0; color: #334155;">Jueves</span> <strong>9:00 AM</strong> — Culto de Ayuno y Oración</p>
+                        <p style="color: var(--text-muted);"><span class="badge" style="background: #E2E8F0; color: #334155;">Domingos</span> <strong>9:00 AM y 11:00 AM</strong> — Escuela Dominical y Cultos</p>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- PETICIONES DE ORACIÓN POR CORREO -->
+        <section id="oracion">
+            <h2>🙏 Buzón de Peticiones de Oración</h2>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">Queremos orar por ti. Déjanos tu motivo de oración y nos llegará de forma confidencial:</p>
+            
+            <form name="peticiones-oracion" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="peticiones-oracion" />
+
+                <div class="form-group">
+                    <label for="nombre">Nombre (Opcional):</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre o anónimo">
+                </div>
+
+                <div class="form-group">
+                    <label for="privacidad">Privacidad de la petición:</label>
+                    <select id="privacidad" name="privacidad">
+                        <option value="Privada (Solo Directiva)">🔒 Privada (Solo para la Directiva)</option>
+                        <option value="Colectiva (Grupo Público)">👥 Colectiva (Para compartir en el Grupo Público)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="peticion">Motivo de oración:</label>
+                    <textarea id="peticion" name="peticion" rows="4" placeholder="Escribe aquí tu petición..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">📩 Enviar Petición Segura</button>
+            </form>
+        </section>
+
+        <!-- GALERÍA DE IMÁGENES DESPLEGABLE (DEBAJO DE ORACIÓN) -->
+        <section id="galeria">
+            <h2>📸 Galería de Actividades</h2>
+            <p style="color: var(--text-muted); margin-bottom: 0.8rem;">Revive los momentos especiales de nuestros eventos y reuniones juveniles:</p>
+
+            <details>
+                <summary>🖼️ Ver Galería de Fotos</summary>
+                <div class="gallery-grid">
+                    <!-- Espacio listo para agregar imágenes posteriormente con la etiqueta <img> -->
+                    <!-- Ejemplo: <img src="URL_DE_LA_FOTO" alt="Actividad" class="gallery-item"> -->
+                    <p style="color: var(--text-muted); font-size: 0.88rem; padding: 1rem; text-align: center; grid-column: 1 / -1;">
+                        Las fotos de nuestras últimas actividades se publicarán aquí próximamente.
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <!-- ¿QUIÉNES SOMOS? -->
+        <section id="quienes-somos">
+            <h2>🌱 ¿Quiénes Somos?</h2>
+            <p style="color: var(--text-muted);">Somos el ministerio de jóvenes de la <strong>Primera Iglesia Bautista El Sinaí en Palma Soriano</strong>. Buscamos impactar nuestra generación compartiendo el amor de Jesús con autenticidad y alegría.</p>
+            
+            <details>
+                <summary>📜 Conoce nuestros Principios Bautistas</summary>
+                <div style="padding: 1rem 0.5rem; display: grid; gap: 0.8rem;">
+                    <div class="card-inner">
+                        <strong style="color: #1E293B;">📖 Autoridad de la Biblia</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted);">Nuestra única regla suprema de fe y estilo de vida es la Palabra de Dios.</p>
+                    </div>
+                    <div class="card-inner">
+                        <strong style="color: #1E293B;">🏛️ Autonomía de la Iglesia Local</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted);">Cada congregación busca la guía directa de Cristo bajo el Espíritu Santo.</p>
+                    </div>
+                    <div class="card-inner">
+                        <strong style="color: #1E293B;">🙌 Sacerdocio del Creyente</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted);">Todos tenemos acceso directo e
