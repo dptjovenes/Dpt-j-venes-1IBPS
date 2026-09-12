@@ -300,7 +300,6 @@
                 <h3 style="color: #92400E; margin-top: 0.3rem;">📊 ¿Puede un cristiano escuchar música secular sin comprometer su fe?</h3>
 
     <form id="poll-form" action="https://sheetdb.io/api/v1/dzg181ausbjsl" method="POST">
-
   <div style="display: flex; flex-direction: column; gap: 0.5rem;">
     <label style="font-weight: 600; cursor: pointer;">
       <input type="radio" name="voto" value="Claro que sí" required> Claro que sí
@@ -315,18 +314,18 @@
     </label>
   </div>
 
-  <button type="submit" class="btn-submit btn-amber">🗳️ Votar</button>
+  <button type="submit" id="poll-btn" class="btn-submit btn-amber" style="margin-top: 0.8rem;">🗳️ Votar</button>
 </form>
 
-                <div id="poll-voted-msg" style="display: none; padding: 1rem 0; text-align: center;">
-                    <div style="background: #FDE68A; color: #78350F; padding: 0.8rem; border-radius: 8px; font-weight: 700;">
-                        ✅ ¡Tu voto ha sido registrado con éxito!
-                    </div>
-                    <p style="color: #92400E; font-size: 0.88rem; margin-top: 0.6rem;">
-                        Los resultados finales los anunciaremos en nuestra próxima reunión presencial.
-                    </p>
-                </div>
-            </div>
+<!-- Mensaje que se muestra al votar o si ya votó antes -->
+<div id="poll-voted-msg" style="display: none; padding: 1rem; margin-top: 1rem;">
+  <div style="background: #FDE68A; color: #78350F; padding: 0.8rem; border-radius: 6px; text-align: center; font-weight: 600;">
+    ✅ ¡Tu voto ha sido registrado con éxito!
+  </div>
+  <p style="color: #92400E; font-size: 0.88rem; margin-top: 0.5rem; text-align: center;">
+    Los resultados finales los anunciaremos en nuestro próximo encuentro.
+  </p>
+</div>
 
 
             <!-- 2. DEBATE SEMANAL -->
@@ -457,24 +456,77 @@
                     </p>
                 </div>
             </details>
-        </section>
+</section>
 
-        <!-- ¿QUIÉNES SOMOS? -->
-        <section id="quienes-somos">
-            <h2>🌱 ¿Quiénes Somos?</h2>
-            <p style="color: var(--text-muted);">Somos el ministerio de jóvenes de la <strong>Primera Iglesia Bautista El Sinaí en Palma Soriano</strong>. Buscamos impactar nuestra generación compartiendo el amor de Jesús con autenticidad y alegría.</p>
-            
-            <details>
-                <summary>📜 Conoce nuestros Principios Bautistas</summary>
-                <div style="padding: 1rem 0.5rem; display: grid; gap: 0.8rem;">
-                    <div class="card-inner">
-                        <strong style="color: #1E293B;">📖 Autoridad de la Biblia</strong>
-                        <p style="font-size: 0.88rem; color: var(--text-muted);">Nuestra única regla suprema de fe y estilo de vida es la Palabra de Dios.</p>
-                    </div>
-                    <div class="card-inner">
-                        <strong style="color: #1E293B;">🏛️ Autonomía de la Iglesia Local</strong>
-                        <p style="font-size: 0.88rem; color: var(--text-muted);">Cada congregación busca la guía directa de Cristo bajo el Espíritu Santo.</p>
-                    </div>
-                    <div class="card-inner">
-                        <strong style="color: #1E293B;">🙌 Sacerdocio del Creyente</strong>
-                        <p style="font-size: 0.88rem; color: var(--text-muted);">Todos tenemos acceso directo e
+<!-- ¿QUIÉNES SOMOS? -->
+<section id="quienes-somos">
+  <h2>🌱 ¿Quiénes Somos?</h2>
+  <p style="color: var(--text-muted);">Somos el ministerio de jóvenes de la <strong>Primera Iglesia Bautista El Sinaí en Palma Soriano</strong>.</p>
+
+  <details style="margin-top: 1rem;">
+    <summary>📜 Conoce nuestros Principios Bautistas</summary>
+    <div style="padding: 1rem 0.5rem; display: grid; gap: 0.8rem;">
+      <div class="card-inner">
+        <strong style="color: #1E293B;">📖 Autoridad de la Biblia</strong>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Nuestra única regla suprema de fe y estilo de vida es la Palabra de Dios.</p>
+      </div>
+
+      <div class="card-inner">
+        <strong style="color: #1E293B;">🏛️ Autonomía de la Iglesia Local</strong>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Cada congregación busca la guía directa de Cristo bajo el Espíritu Santo.</p>
+      </div>
+
+      <div class="card-inner">
+        <strong style="color: #1E293B;">🙌 Sacerdocio de todos los Creyentes</strong>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Todos tenemos acceso directo e igualitario al Padre a través de Jesucristo.</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- SCRIPT DE ENCUESTA (Evita pantalla blanca y limita a 1 voto) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pollForm = document.getElementById('poll-form');
+    const pollMsg = document.getElementById('poll-voted-msg');
+    const submitBtn = document.getElementById('poll-btn');
+
+    // Verificar si ya votó previamente desde este dispositivo/navegador
+    if (localStorage.getItem('encuesta_votada') === 'true') {
+      if (pollForm) pollForm.style.display = 'none';
+      if (pollMsg) pollMsg.style.display = 'block';
+    }
+
+    if (pollForm) {
+      pollForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Detiene el salto a la pantalla {"created":1}
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
+
+        const formData = new FormData(pollForm);
+
+        fetch(pollForm.action, {
+          method: 'POST',
+          body: formData,
+        })
+        .then(response => {
+          // Guardar registro de voto en el navegador
+          localStorage.setItem('encuesta_votada', 'true');
+          
+          // Ocultar el formulario y mostrar el mensaje de agradecimiento
+          pollForm.style.display = 'none';
+          pollMsg.style.display = 'block';
+        })
+        .catch(error => {
+          alert('Hubo un error al registrar tu voto. Por favor intenta de nuevo.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '🗳️ Votar';
+        });
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
