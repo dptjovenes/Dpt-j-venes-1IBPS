@@ -299,19 +299,18 @@
                 <span class="badge" style="background: #FDE68A; color: #78350F;">ENCUESTA DE LA SEMANA</span>
                 <h3 style="color: #92400E; margin-top: 0.3rem;">📊 ¿Puede un cristiano escuchar música secular sin comprometer su fe?</h3>
 
-                <form id="poll-form" name="encuesta-semanal" method="POST" data-netlify="true" style="margin-top: 0.8rem;">
-                    <input type="hidden" name="form-name" value="encuesta-semanal" />
+                <form id="poll-form" action="https://sheetdb.io/api/v1/TU_CODIGO_DE_SHEETDB" method="POST">
 
                     <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
                         <label style="font-weight: 600; cursor: pointer;">
-                            <input type="radio" name="voto" value= > Claro que sí 
-                        </label>
+                            <input type="radio" name="voto" value="Claro que sí" required> Claro que sí
+                            </label>
                         <label style="font-weight: 600; cursor: pointer;">
-                            <input type="radio" name="voto" value=> No
-                        </label>
+                     <input type="radio" name="voto" value="No" required> No
+                     </label>
                         <label style="font-weight: 600; cursor: pointer;">
-                            <input type="radio" name="voto" value=> No estoy seguro sobre este asunto 
-                        </label>
+                            <input type="radio" name="voto" value="No estoy seguro" required> No estoy seguro
+                            </label>
                     </div>
 
                     <button type="submit" class="btn-submit btn-amber">Votar en la encuesta</button>
@@ -348,8 +347,8 @@
                 <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">✍️ ¿Tienes una pregunta difícil o controversial?</h4>
                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">Déjala aquí (puede ser anónima). Las responderemos en los estudios de los sábados:</p>
 
-                <form name="preguntas-dificiles" method="POST" data-netlify="true">
-                    <input type="hidden" name="form-name" value="preguntas-dificiles" />
+                <form action="https://formspree.io/f/xkjnavgz" method="POST">
+  <input type="hidden" name="_subject" value="Nueva Pregunta Difícil / Controversial">
 
                     <div class="form-group">
                         <input type="text" name="nombre_opcional" placeholder="Tu nombre (opcional)">
