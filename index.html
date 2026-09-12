@@ -412,34 +412,34 @@
         </section>
 
         <!-- PETICIONES DE ORACIÓN POR CORREO -->
-        <section id="oracion">
-            <h2>🙏 Buzón de Peticiones de Oración</h2>
-            <p style="margin-bottom: 1rem; color: var(--text-muted);">Queremos orar por ti. Déjanos tu motivo de oración y nos llegará de forma confidencial:</p>
-            
-            <form name="peticiones-oracion" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="peticiones-oracion" />
+      <section id="oracion">
+  <h2>🙏 Buzón de Peticiones de Oración</h2>
+  <p style="margin-bottom: 1rem; color: var(--text-muted);">Envía tu petición directamente a nuestro correo.</p>
 
-                <div class="form-group">
-                    <label for="nombre">Nombre (Opcional):</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre o anónimo">
-                </div>
+  <form action="https://formspree.io/f/xkjnavgz" method="POST">
+    
+    <div class="form-group">
+      <label for="nombre">Nombre (Opcional):</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+    </div>
 
-                <div class="form-group">
-                    <label for="privacidad">Privacidad de la petición:</label>
-                    <select id="privacidad" name="privacidad">
-                        <option value="Privada (Solo Directiva)">🔒 Privada (Solo para la Directiva)</option>
-                        <option value="Colectiva (Grupo Público)">👥 Colectiva (Para compartir en el Grupo Público)</option>
-                    </select>
-                </div>
+    <div class="form-group">
+      <label for="privacidad">Privacidad de la petición:</label>
+      <select id="privacidad" name="privacidad">
+        <option value="Privada (Solo Directiva)">Privada (Solo Directiva)</option>
+        <option value="Colectiva (Grupo Público)">Colectiva (Grupo Público)</option>
+      </select>
+    </div>
 
-                <div class="form-group">
-                    <label for="peticion">Motivo de oración:</label>
-                    <textarea id="peticion" name="peticion" rows="4" placeholder="Escribe aquí tu petición..." required></textarea>
-                </div>
+    <div class="form-group">
+      <label for="peticion">Motivo de oración:</label>
+      <textarea id="peticion" name="peticion" rows="4" required placeholder="Escribe tu motivo aquí..."></textarea>
+    </div>
 
-                <button type="submit" class="btn-submit">📩 Enviar Petición Segura</button>
-            </form>
-        </section>
+    <button type="submit" class="btn-submit">📩 Enviar Petición</button>
+  </form>
+</section>
+
 
         <!-- GALERÍA DE IMÁGENES DESPLEGABLE (DEBAJO DE ORACIÓN) -->
         <section id="galeria">
