@@ -252,10 +252,46 @@
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
             transform: scale(1.03);
+        }
+
+        /* ESTILOS DEL VISOR / LIGHTBOX PARA AMPLIAR FOTOS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
         }
 
         footer {
@@ -299,57 +335,46 @@
                 <span class="badge" style="background: #FDE68A; color: #78350F;">ENCUESTA DE LA SEMANA</span>
                 <h3 style="color: #92400E; margin-top: 0.3rem;">📊 ¿Puede un cristiano escuchar música secular sin comprometer su fe?</h3>
 
-    <form id="poll-form" action="https://sheetdb.io/api/v1/dzg181ausbjsl" method="POST">
-  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-    <label style="font-weight: 600; cursor: pointer;">
-      <input type="radio" name="voto" value="Claro que sí" required> Claro que sí
-    </label>
+                <form id="poll-form" action="https://sheetdb.io/api/v1/dzg181ausbjsl" method="POST">
+                  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <label style="font-weight: 600; cursor: pointer;">
+                      <input type="radio" name="voto" value="Claro que sí" required> Claro que sí
+                    </label>
 
-    <label style="font-weight: 600; cursor: pointer;">
-      <input type="radio" name="voto" value="No" required> No
-    </label>
+                    <label style="font-weight: 600; cursor: pointer;">
+                      <input type="radio" name="voto" value="No" required> No
+                    </label>
 
-    <label style="font-weight: 600; cursor: pointer;">
-      <input type="radio" name="voto" value="No estoy seguro" required> No estoy seguro
-    </label>
-  </div>
+                    <label style="font-weight: 600; cursor: pointer;">
+                      <input type="radio" name="voto" value="No estoy seguro" required> No estoy seguro
+                    </label>
+                  </div>
 
-  <button type="submit" id="poll-btn" class="btn-submit btn-amber" style="margin-top: 0.8rem;">🗳️ Votar</button>
-</form>
+                  <button type="submit" id="poll-btn" class="btn-submit btn-amber" style="margin-top: 0.8rem;">🗳️ Votar</button>
+                </form>
 
-<!-- Mensaje que se muestra al votar o si ya votó antes -->
-<div id="poll-voted-msg" style="display: none; padding: 1rem; margin-top: 1rem;">
-  <div style="background: #FDE68A; color: #78350F; padding: 0.8rem; border-radius: 6px; text-align: center; font-weight: 600;">
-    ✅ ¡Tu voto ha sido registrado con éxito!
-  </div>
-  <p style="color: #92400E; font-size: 0.88rem; margin-top: 0.5rem; text-align: center;">
-    Los resultados finales los anunciaremos en nuestro próximo encuentro.
-  </p>
-</div>
-
+                <!-- Mensaje que se muestra al votar o si ya votó antes -->
+                <div id="poll-voted-msg" style="display: none; padding: 1rem; margin-top: 1rem;">
+                  <div style="background: #FDE68A; color: #78350F; padding: 0.8rem; border-radius: 6px; text-align: center; font-weight: 600;">
+                    ✅ ¡Tu voto ha sido registrado con éxito!
+                  </div>
+                  <p style="color: #92400E; font-size: 0.88rem; margin-top: 0.5rem; text-align: center;">
+                    Los resultados finales los anunciaremos en nuestro próximo encuentro.
+                  </p>
+                </div>
+            </div>
 
             <!-- 2. DEBATE SEMANAL -->
-            <div class="card-inner" style="border-left-color: var(--accent-color);">
+                     <!--   <div class="card-inner" style="border-left-color: var(--accent-color);">
                 <span class="badge" style="background: #DDD6FE; color: #5B21B6;">DEBATE SEMANAL</span>
                 <h3 style="color: #4C1D95; margin-top: 0.3rem;">❓ Pregunta Controversial</h3>
                 <p style="margin-bottom: 0.8rem;"><em>"¿Puede un cristiano escuchar música secular sin comprometer su fe?"</em></p>
-
-     <!-- RESPUESTA BASADA EN LA ENCUESTA --> 
-               <div style="background: #F3E8FF; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 1.2rem; border-left: 3px solid var(--accent-color);">
-                    <strong style="color: #5B21B6; font-size: 0.88rem;">💡 Respuesta a la pregunta controversial:</strong>
-                    <p style="font-size: 0.88rem; color: #4C1D95; margin-top: 0.2rem;">
-                        La respuesta a este tema se basa en el tema seleccionado previamente en la encuesta del grupo y será profundizada durante nuestro estudio del próximo sábado.
-                    </p>
-                </div>
-
-                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1rem 0;">
-               
-
+-->
                 <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">✍️ ¿Tienes una pregunta difícil o controversial?</h4>
                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">Déjala aquí (puede ser anónima). Las responderemos en los estudios de los sábados:</p>
 
                 <form action="https://formspree.io/f/xkjnavgz" method="POST">
-  <input type="hidden" name="_subject" value="Nueva Pregunta Difícil / Controversial">
+                    <input type="hidden" name="_subject" value="Nueva Pregunta Difícil / Controversial">
 
                     <div class="form-group">
                         <input type="text" name="nombre_opcional" placeholder="Tu nombre (opcional)">
@@ -412,121 +437,220 @@
         </section>
 
         <!-- PETICIONES DE ORACIÓN POR CORREO -->
-      <section id="oracion">
-  <h2>🙏 Buzón de Peticiones de Oración</h2>
-  <p style="margin-bottom: 1rem; color: var(--text-muted);">Envía tu petición directamente a nuestro correo.</p>
+        <section id="oracion">
+            <h2>🙏 Buzón de Peticiones de Oración</h2>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">Envía tu petición directamente a nuestro correo.</p>
 
-  <form action="https://formspree.io/f/xkjnavgz" method="POST">
-    
-    <div class="form-group">
-      <label for="nombre">Nombre (Opcional):</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
-    </div>
+            <form action="https://formspree.io/f/xkjnavgz" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre (Opcional):</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+                </div>
 
-    <div class="form-group">
-      <label for="privacidad">Privacidad de la petición:</label>
-      <select id="privacidad" name="privacidad">
-        <option value="Privada (Solo Directiva)">Privada (Solo Directiva)</option>
-        <option value="Colectiva (Grupo Público)">Colectiva (Grupo Público)</option>
-      </select>
-    </div>
+                <div class="form-group">
+                    <label for="privacidad">Privacidad de la petición:</label>
+                    <select id="privacidad" name="privacidad">
+                        <option value="Privada (Solo Directiva)">Privada (Solo Directiva)</option>
+                        <option value="Colectiva (Grupo Público)">Colectiva (Grupo Público)</option>
+                    </select>
+                </div>
 
-    <div class="form-group">
-      <label for="peticion">Motivo de oración:</label>
-      <textarea id="peticion" name="peticion" rows="4" required placeholder="Escribe tu motivo aquí..."></textarea>
-    </div>
+                <div class="form-group">
+                    <label for="peticion">Motivo de oración:</label>
+                    <textarea id="peticion" name="peticion" rows="4" required placeholder="Escribe tu motivo aquí..."></textarea>
+                </div>
 
-    <button type="submit" class="btn-submit">📩 Enviar Petición</button>
-  </form>
-</section>
+                <button type="submit" class="btn-submit">📩 Enviar Petición</button>
+            </form>
+        </section>
 
-
-        <!-- GALERÍA DE IMÁGENES DESPLEGABLE (DEBAJO DE ORACIÓN) -->
+           <!-- GALERÍA DE IMÁGENES DIVIDIDA EN DOS SECCIONES -->
         <section id="galeria">
             <h2>📸 Galería de Actividades</h2>
-            <p style="color: var(--text-muted); margin-bottom: 0.8rem;">Revive los momentos especiales de nuestros eventos y reuniones juveniles:</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.8rem;">Revive los momentos especiales de nuestras actividades y reuniones juveniles:</p>
 
+            <!-- SECCIÓN 1: CENA GOURMET -->
             <details>
-                <summary>🖼️ Ver Galería de Fotos</summary>
+                <summary>🍽️ Cena Gourmet</summary>
                 <div class="gallery-grid">
-                    <!-- Espacio listo para agregar imágenes posteriormente con la etiqueta <img> -->
-                    <!-- Ejemplo: <img src="URL_DE_LA_FOTO" alt="Actividad" class="gallery-item"> -->
+                    <img src="https://i.ibb.co/V5YTSDr/IMG-20260830-WA0140.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/pBWq1ghn/IMG-20260830-WA0146.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/fzV4DPW6/IMG-20260830-WA0145.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/5XZZmBhC/IMG-20260830-WA0142.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/PZM84HhJ/IMG-20260830-WA0059.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Kpb31X2N/IMG-20260830-WA0064.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/sd3cFsx0/IMG-20260830-WA0066.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/mCXjqd3c/IMG-20260830-WA0073.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/0VdXzL4m/IMG-20260830-WA0058.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/KxhrFgtB/IMG-20260830-WA0069.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/LznN8jVQ/IMG-20260830-WA0070.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/9HQd4nmY/IMG-20260830-WA0072.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/BVRjxLfp/IMG-20260830-WA0036.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Kxx43RYd/IMG-20260829-WA0054.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/d4g4rBnK/IMG-20260829-WA0044.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/S87J2hk/IMG-20260829-WA0033.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/YTqjDWjP/IMG-20260829-WA0046.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/fzw5wX4r/IMG-20260829-WA0038.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/HM2CxP3/IMG-20260829-WA0047.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Q5nvyKB/IMG-20260830-WA0061.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/fzSRws99/IMG-20260829-WA0031.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/fzrTpFqq/IMG-20260829-WA0094.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/HDTZvD01/IMG-20260829-WA0050.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/1fz3prkg/IMG-20260829-WA0091.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/4ZH0g5sm/IMG-20260829-WA0078.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/F403bQPt/IMG-20260829-WA0092.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/ks2bvPJX/IMG-20260829-WA0081.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/yFSvKDXS/IMG-20260829-WA0096.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/pjmZH7MQ/IMG-20260829-WA0077.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Rp3B2fZB/IMG-20260829-WA0060.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/CsJhnPFq/IMG-20260829-WA0075.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Y7F1fcP8/IMG-20260829-WA0070.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/7Jk5xzsn/IMG-20260829-WA0101.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/JF5QBQ1s/IMG-20260829-WA0087.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/60ZphxMz/IMG-20260829-WA0064.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Ngpq3zTz/IMG-20260829-WA0099.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Xx8pjmXj/IMG-20260829-WA0076.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/Ldxp2kHg/IMG-20260829-WA0080.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/C5R1GJd7/IMG-20260829-WA0066.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/KkTDnxS/IMG-20260829-WA0057.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/gZRsZsyr/IMG-20260829-WA0088.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/GmzwYSH/IMG-20260829-WA0071.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/m3MYSs8/IMG-20260829-WA0055.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/tMTLRbYx/IMG-20260829-WA0073.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/DHwf6YbN/IMG-20260829-WA0053.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/G4dytXn3/IMG-20260829-WA0059.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/KcfRWFwf/IMG-20260829-WA0068.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/zhdhRRHL/IMG-20260829-WA0069.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/spyYGMWL/IMG-20260829-WA0093.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/mFyqJxM9/IMG-20260829-WA0056.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/j9wC9sRJ/IMG-20260829-WA0065.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/hRLmF3TW/IMG-20260829-WA0083.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/m5xQWc9X/IMG-20260829-WA0074.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/b5046XCC/IMG-20260829-WA0086.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/wFwjPG30/IMG-20260829-WA0097.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/rNtMSYm/IMG-20260829-WA0082.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/SXXgrBcv/IMG-20260829-WA0102.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/KjL3zBxB/IMG-20260829-WA0090.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/BHYQWjJR/IMG-20260829-WA0079.jpg" alt="Cena Gourmet" class="gallery-item">
+                    <img src="https://i.ibb.co/TdycF4c/IMG-20260829-WA0062.jpg" alt="Cena Gourmet" class="gallery-item">
+                </div>
+            </details>
+
+            <!-- SECCIÓN 2: CULTOS DE JÓVENES -->
+            <details style="margin-top: 0.8rem;">
+                <summary>🔥 Cultos de Jóvenes</summary>
+                <div class="gallery-grid">
+                    <!-- Agrega aquí los enlaces de las fotos de los cultos cuando los tengas -->
                     <p style="color: var(--text-muted); font-size: 0.88rem; padding: 1rem; text-align: center; grid-column: 1 / -1;">
-                        Las fotos de nuestras últimas actividades se publicarán aquí próximamente.
+                        Las fotos de los cultos se publicarán aquí próximamente.
                     </p>
                 </div>
             </details>
-</section>
+        </section>
 
-<!-- ¿QUIÉNES SOMOS? -->
-<section id="quienes-somos">
-  <h2>🌱 ¿Quiénes Somos?</h2>
-  <p style="color: var(--text-muted);">Somos el ministerio de jóvenes de la <strong>Primera Iglesia Bautista El Sinaí en Palma Soriano</strong>.</p>
 
-  <details style="margin-top: 1rem;">
-    <summary>📜 Conoce nuestros Principios Bautistas</summary>
-    <div style="padding: 1rem 0.5rem; display: grid; gap: 0.8rem;">
-      <div class="card-inner">
-        <strong style="color: #1E293B;">📖 Autoridad de la Biblia</strong>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Nuestra única regla suprema de fe y estilo de vida es la Palabra de Dios.</p>
-      </div>
+        <!-- ¿QUIÉNES SOMOS? -->
+        <section id="quienes-somos">
+            <h2>🌱 ¿Quiénes Somos?</h2>
+            <p style="color: var(--text-muted);">Somos el ministerio de jóvenes de la <strong>Primera Iglesia Bautista El Sinaí en Palma Soriano</strong>.</p>
 
-      <div class="card-inner">
-        <strong style="color: #1E293B;">🏛️ Autonomía de la Iglesia Local</strong>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Cada congregación busca la guía directa de Cristo bajo el Espíritu Santo.</p>
-      </div>
+            <details style="margin-top: 1rem;">
+                <summary>📜 Conoce nuestros Principios Bautistas</summary>
+                <div style="padding: 1rem 0.5rem; display: grid; gap: 0.8rem;">
+                    <div class="card-inner">
+                        <strong style="color: #1E293B;">📖 Autoridad de la Biblia</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Nuestra única regla suprema de fe y estilo de vida es la Palabra de Dios.</p>
+                    </div>
 
-      <div class="card-inner">
-        <strong style="color: #1E293B;">🙌 Sacerdocio de todos los Creyentes</strong>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Todos tenemos acceso directo e igualitario al Padre a través de Jesucristo.</p>
-      </div>
+                    <div class="card-inner">
+                        <strong style="color: #1E293B;">🏛️ Autonomía de la Iglesia Local</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Cada congregación busca la guía directa de Cristo bajo el Espíritu Santo.</p>
+                    </div>
+
+                    <div class="card-inner">
+                        <strong style="color: #1E293B;">🙌 Sacerdocio de todos los Creyentes</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Todos tenemos acceso directo e igualitario al Padre a través de Jesucristo.</p>
+                    </div>
+                </div>
+            </details>
+        </section>
+
     </div>
-  </details>
-</section>
 
-<!-- SCRIPT DE ENCUESTA (Evita pantalla blanca y limita a 1 voto) -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const pollForm = document.getElementById('poll-form');
-    const pollMsg = document.getElementById('poll-voted-msg');
-    const submitBtn = document.getElementById('poll-btn');
+    <!-- VISOR EN PANTALLA COMPLETA (LIGHTBOX) PARA AMPLIAR LAS FOTOS -->
+    <div id="image-lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Imagen ampliada">
+    </div>
 
-    // Verificar si ya votó previamente desde este dispositivo/navegador
-    if (localStorage.getItem('encuesta_votada') === 'true') {
-      if (pollForm) pollForm.style.display = 'none';
-      if (pollMsg) pollMsg.style.display = 'block';
-    }
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>Departamento de jóvenes de la Primera Iglesia Bautista de Palma Soriano "El Sinaí".</p>
+    </footer>
 
-    if (pollForm) {
-      pollForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Detiene el salto a la pantalla {"created":1}
+    <!-- SCRIPTS -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // --- 1. LÓGICA DE LA ENCUESTA SEMANAL ---
+        const pollForm = document.getElementById('poll-form');
+        const pollMsg = document.getElementById('poll-voted-msg');
+        const submitBtn = document.getElementById('poll-btn');
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando...';
+        if (localStorage.getItem('encuesta_votada') === 'true') {
+          if (pollForm) pollForm.style.display = 'none';
+          if (pollMsg) pollMsg.style.display = 'block';
+        }
 
-        const formData = new FormData(pollForm);
+        if (pollForm) {
+          pollForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        fetch(pollForm.action, {
-          method: 'POST',
-          body: formData,
-        })
-        .then(response => {
-          // Guardar registro de voto en el navegador
-          localStorage.setItem('encuesta_votada', 'true');
-          
-          // Ocultar el formulario y mostrar el mensaje de agradecimiento
-          pollForm.style.display = 'none';
-          pollMsg.style.display = 'block';
-        })
-        .catch(error => {
-          alert('Hubo un error al registrar tu voto. Por favor intenta de nuevo.');
-          submitBtn.disabled = false;
-          submitBtn.textContent = '🗳️ Votar';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+
+            const formData = new FormData(pollForm);
+
+            fetch(pollForm.action, {
+              method: 'POST',
+              body: formData,
+            })
+            .then(response => {
+              localStorage.setItem('encuesta_votada', 'true');
+              pollForm.style.display = 'none';
+              pollMsg.style.display = 'block';
+            })
+            .catch(error => {
+              alert('Hubo un error al registrar tu voto. Por favor intenta de nuevo.');
+              submitBtn.disabled = false;
+              submitBtn.textContent = '🗳️ Votar';
+            });
+          });
+        }
+
+        // --- 2. LÓGICA PARA AMPLIAR FOTOS DE LA GALERÍA AL HACER CLIC ---
+        const lightbox = document.getElementById('image-lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        document.querySelectorAll('.gallery-item').forEach(img => {
+          img.addEventListener('click', function() {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = this.src;
+            lightboxImg.alt = this.alt;
+          });
         });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+        }
+
+        if (lightbox) {
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.style.display = 'none';
+          });
+        }
       });
-    }
-  });
-</script>
+    </script>
 
 </body>
 </html>
