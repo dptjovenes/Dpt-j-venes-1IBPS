@@ -333,26 +333,25 @@
             <!-- 1. ENCUESTA SEMANAL -->
             <div class="card-highlight" style="border-left-color: #F59E0B; background: #FEF3C7;">
                 <span class="badge" style="background: #FDE68A; color: #78350F;">ENCUESTA DE LA SEMANA</span>
-                <h3 style="color: #92400E; margin-top: 0.3rem;">📊 ¿Puede un cristiano escuchar música secular sin comprometer su fe?</h3>
+                <h3 style="color: #92400E; margin-top: 0.3rem;">📊 ¿Por qué permite Dios que los inocentes sufran?</h3>
 
                 <form id="poll-form" action="https://sheetdb.io/api/v1/dzg181ausbjsl" method="POST">
                   <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                     <label style="font-weight: 600; cursor: pointer;">
-                      <input type="radio" name="voto" value="Claro que sí" required> Claro que sí
+                      <input type="radio" name="voto" value="No sé" required> No sé 
                     </label>
 
                     <label style="font-weight: 600; cursor: pointer;">
-                      <input type="radio" name="voto" value="No" required> No
+                      <input type="radio" name="voto" value="No puede controlarlo" required> No puede controlarlo 
                     </label>
 
                     <label style="font-weight: 600; cursor: pointer;">
-                      <input type="radio" name="voto" value="No estoy seguro" required> No estoy seguro
+                      <input type="radio" name="voto" value="Castigo porque todos son pecadores" required> Castigo porque todos son pecadores
                     </label>
                   </div>
 
                   <button type="submit" id="poll-btn" class="btn-submit btn-amber" style="margin-top: 0.8rem;">🗳️ Votar</button>
                 </form>
-
                 <!-- Mensaje que se muestra al votar o si ya votó antes -->
                 <div id="poll-voted-msg" style="display: none; padding: 1rem; margin-top: 1rem;">
                   <div style="background: #FDE68A; color: #78350F; padding: 0.8rem; border-radius: 6px; text-align: center; font-weight: 600;">
